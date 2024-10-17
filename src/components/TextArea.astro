@@ -1,0 +1,23 @@
+---
+interface Props {
+  id?: string;
+  placeholder?: string;
+  title?: string;
+  readonly?: boolean;
+  className?: string;
+}
+
+const { id, placeholder, title, readonly, className } = Astro.props;
+---
+
+<label class="form-control">
+  <div class="label">
+    <span class="font-medium text-start text-lg">{title}</span>
+  </div>
+  <textarea
+    readonly={readonly}
+    id={id}
+    placeholder={placeholder}
+    class={className}
+    title="d"></textarea>
+</label>

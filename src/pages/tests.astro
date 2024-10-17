@@ -1,0 +1,326 @@
+---
+import Input from "../components/Input.astro";
+import Select from "../components/Select.astro";
+import TextArea from "../components/TextArea.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Make a test">
+  <header class="mt-2 w-full flex flex-col justify-center items-center">
+    <div class="p-8 pb-24 w-full max-w-screen-md">
+      <h1 class="text-4xl font-bold flex items-center gap-4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="icon icon-tabler icons-tabler-filled icon-tabler-flask-2"
+          ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M15 2a1 1 0 0 1 0 2v5.674l.062 .03a7 7 0 0 1 3.85 5.174l.037 .262a7 7 0 0 1 -3.078 6.693a1 1 0 0 1 -.553 .167h-6.635a1 1 0 0 1 -.552 -.166a7 7 0 0 1 .807 -12.134l.062 -.028v-5.672a1 1 0 1 1 0 -2h6zm-2 2h-2v6.34a1 1 0 0 1 -.551 .894l-.116 .049a5 5 0 0 0 -2.92 2.717h9.172a5 5 0 0 0 -2.918 -2.715a1 1 0 0 1 -.667 -.943v-6.342z"
+          ></path></svg
+        >
+        Make a test
+      </h1>
+      <div class="mt-8 gap-4 flex flex-col justify-center">
+        <div
+          class="gap-4 w-full flex md:flex-row flex-col md:justify-start justify-center items-center"
+        >
+          <Input
+            id="files"
+            title="Upload files"
+            type="file"
+            className="file-input file-input-bordered w-full"
+            multiple
+          />
+
+          <button
+            id="build-button"
+            class="md:mt-[44px] btn btn-primary md:w-1/2 w-full btn-disabled"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-hammer"
+              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                d="M11.414 10l-7.383 7.418a2.091 2.091 0 0 0 0 2.967a2.11 2.11 0 0 0 2.976 0l7.407 -7.385"
+              ></path><path
+                d="M18.121 15.293l2.586 -2.586a1 1 0 0 0 0 -1.414l-7.586 -7.586a1 1 0 0 0 -1.414 0l-2.586 2.586a1 1 0 0 0 0 1.414l7.586 7.586a1 1 0 0 0 1.414 0z"
+              ></path></svg
+            >
+            BUILD
+          </button>
+        </div>
+
+        <Input
+          id="name-object"
+          title="Name the object to build"
+          placeholder="Example upload_file by default is file"
+          className="input input-bordered w-full"
+        />
+
+        <div class="relative">
+          <TextArea
+            readonly
+            title="Object generated"
+            id="json-generated"
+            className="textarea textarea-bordered h-80 w-full text-lg font-semibold"
+          />
+          <div
+            id="jo-copy-button"
+            class="absolute top-2 left-[95%] cursor-pointer hover:transition-opacity hover:opacity-50"
+          >
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-copy"
+                ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                  d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z"
+                ></path><path
+                  d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1"
+                ></path></svg
+              >
+            </span>
+            <span class="hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="icon icon-tabler icons-tabler-filled icon-tabler-copy-check"
+                ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                  d="M18.333 6a3.667 3.667 0 0 1 3.667 3.667v8.666a3.667 3.667 0 0 1 -3.667 3.667h-8.666a3.667 3.667 0 0 1 -3.667 -3.667v-8.666a3.667 3.667 0 0 1 3.667 -3.667zm-3.333 -4c1.094 0 1.828 .533 2.374 1.514a1 1 0 1 1 -1.748 .972c-.221 -.398 -.342 -.486 -.626 -.486h-10c-.548 0 -1 .452 -1 1v9.998c0 .32 .154 .618 .407 .805l.1 .065a1 1 0 1 1 -.99 1.738a3 3 0 0 1 -1.517 -2.606v-10c0 -1.652 1.348 -3 3 -3zm1.293 9.293l-3.293 3.292l-1.293 -1.292a1 1 0 0 0 -1.414 1.414l2 2a1 1 0 0 0 1.414 0l4 -4a1 1 0 0 0 -1.414 -1.414"
+                ></path></svg
+              >
+            </span>
+          </div>
+        </div>
+        <form id="req-form" class="mt-6 w-full flex flex-col justify-center">
+          <h2 class="font-semibold text-2xl text-success">
+            Send request to API
+          </h2>
+          <div
+            class="mt-2 w-full flex md:flex-row flex-col gap-3 md:gap-4 md:justify-start items-center justify-center"
+          >
+            <Input
+              required
+              id="url-api"
+              name="url-api"
+              title="Insert url api"
+              placeholder="https://api.com/upload"
+              className="input input-bordered min-w-full md:max-w-xs"
+            />
+
+            <Select
+              id="method"
+              name="method"
+              title="Method HTTP ?"
+              options={[
+                { value: "POST", text: "POST", default: true },
+                { value: "PUT", text: "PUT" },
+                { value: "PATCH", text: "PATCH" },
+              ]}
+            />
+          </div>
+
+          <button
+            id="request-button"
+            type="submit"
+            class="mt-8 btn btn-outline xmd:max-w-xs w-full"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-sitemap"
+              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                d="M3 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"
+              ></path><path
+                d="M15 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"
+              ></path><path
+                d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"
+              ></path><path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"
+              ></path><path d="M12 9l0 3"></path></svg
+            >
+            REQUEST TO API
+            <span class="loading loading-spinner hidden"></span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </header>
+</Layout>
+
+<script>
+  import type { HTMLString } from "astro/runtime/server/escape.js";
+  import {
+    composeFileUpload,
+    composeMultipleFilesUpload,
+  } from "fup-node-front";
+
+  const form = document.querySelector("#req-form");
+  const buildButton = document.querySelector("#build-button");
+  const files = document.querySelector("#files");
+  const jsonGenerated = document.querySelector("#json-generated");
+  const nameObject = document.querySelector("#name-object");
+  const joCopyButton = document.querySelector("#jo-copy-button");
+  const requestButton = document.querySelector("#request-button");
+
+  if (localStorage.getItem("current-url") != null) {
+    const urlAPI = document.querySelector("#url-api") as HTMLInputElement;
+    const urlAPIMethod = document.querySelector("#method") as HTMLSelectElement;
+
+    urlAPI.value = localStorage.getItem("current-url") || "";
+    urlAPIMethod.value = localStorage.getItem("current-url-m") || "";
+  }
+
+  const buildBodyUpload = async (filesList: FileList): Promise<object> => {
+    const value = (nameObject as HTMLInputElement).value || "file";
+    if (filesList.length == 1) {
+      return {
+        [value]: await composeFileUpload(filesList),
+      };
+    } else {
+      return {
+        [value]: await composeMultipleFilesUpload(filesList),
+      };
+    }
+  };
+
+  const validateURL = (url: string) => {
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const loading = (state: boolean) => {
+    const loadingElem = requestButton?.querySelector("span:nth-of-type(1)");
+
+    if (state) {
+      loadingElem?.classList.remove("hidden");
+    } else {
+      loadingElem?.classList.add("hidden");
+    }
+  };
+
+  form?.addEventListener("submit", async (event: Event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+
+    // Values from the form
+    const urlAPI = formData.get("url-api") as string;
+    const method = formData.get("method") as string;
+
+    // Validate url api is correct
+    if (!validateURL(urlAPI)) {
+      alert("The API URL is not valid");
+      return;
+    }
+
+    if ((files as HTMLInputElement).files?.length == 0) {
+      alert("Please select a file.");
+      return;
+    }
+
+    const body = JSON.stringify(
+      await buildBodyUpload((files as HTMLInputElement).files ?? new FileList())
+    );
+
+    localStorage.setItem("current-url", urlAPI);
+    localStorage.setItem("current-url-m", method);
+
+    loading(true);
+
+    try {
+      const res = await fetch(urlAPI, {
+        method: method,
+        body: body,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const text = await res.text();
+
+      if (!res.ok) throw new Error(text);
+      else alert(text);
+    } catch (err) {
+      alert("Error " + (err as Error).message);
+    }
+
+    loading(false);
+  });
+
+  files?.addEventListener("change", async (event: Event) => {
+    const filesList = (event.target as HTMLInputElement).files;
+
+    // Disable button if file list is empty
+    if (filesList?.length == 0) {
+      buildButton?.classList.add("btn-disabled");
+      return;
+    } else {
+      buildButton?.classList.remove("btn-disabled");
+    }
+  });
+
+  buildButton?.addEventListener("click", async () => {
+    const filesList = (files as HTMLInputElement).files;
+    const jgen = JSON.stringify(
+      await buildBodyUpload(filesList ?? new FileList()),
+      null,
+      4
+    );
+
+    (jsonGenerated as HTMLInputElement).value = jgen;
+    (jsonGenerated as HTMLInputElement).classList.remove("btn-disabled");
+  });
+
+  joCopyButton?.addEventListener("click", async () => {
+    const jsong = (jsonGenerated as HTMLInputElement).value;
+
+    // Validate the textarea is not empty
+    if (jsong == "") return;
+
+    const copyDefault = joCopyButton.querySelector("span:nth-of-type(1)");
+    const copyOk = joCopyButton.querySelector("span:nth-of-type(2)");
+
+    try {
+      await navigator.clipboard.writeText(jsong);
+      copyDefault?.classList.add("hidden");
+      copyOk?.classList.remove("hidden");
+
+      setTimeout(() => {
+        copyDefault?.classList.remove("hidden");
+        copyOk?.classList.add("hidden");
+      }, 1000);
+    } catch (err) {
+      alert("Error: " + (err as Error).message);
+    }
+
+    copyDefault?.classList.add("hidden");
+  });
+</script>

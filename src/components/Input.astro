@@ -1,0 +1,30 @@
+---
+interface Props {
+  id?: string;
+  name?: string;
+  placeholder?: string;
+  title?: string;
+  type?: astroHTML.JSX.HTMLInputTypeAttribute;
+  className: string;
+  multiple?: boolean;
+  required?: boolean;
+}
+
+const { id, name, placeholder, title, type, className, multiple, required } =
+  Astro.props;
+---
+
+<label class="form-control w-full">
+  <div class="label">
+    <span class="font-medium text-start text-lg">{title}</span>
+  </div>
+  <input
+    id={id}
+    name={name}
+    type={type}
+    placeholder={placeholder}
+    class={className}
+    multiple={multiple}
+    required={required}
+  />
+</label>

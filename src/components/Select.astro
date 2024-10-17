@@ -1,0 +1,29 @@
+---
+interface Props {
+  id?: string;
+  title?: string;
+  name?: string;
+  options: {
+    value: string;
+    text: string;
+    default?: boolean;
+  }[];
+}
+
+const { id, title, name, options } = Astro.props;
+---
+
+<label class="form-control w-full">
+  <div class="label">
+    <span class="font-medium text-start text-lg">{title}</span>
+  </div>
+  <select class="select select-bordered" name={name} id={id}>
+    {
+      options.map((e) => (
+        <option selected={e.default ?? false} value={e.value}>
+          {e.text}
+        </option>
+      ))
+    }
+  </select>
+</label>
